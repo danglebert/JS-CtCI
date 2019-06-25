@@ -25,26 +25,6 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
-
-  kthToLast(n) {
-    // with length, can technically just iterate length - n times
-    // or compute length, then do the same.
-    // this is a bit contrived but mainly for fun / the challenge.
-
-    let leadNode = this.head.next;
-    let trailNode = this.head;
-
-    for (let i = n - 1; i > 0; --i) {
-      leadNode = leadNode.next;
-    }
-
-    while (leadNode) {
-      leadNode = leadNode.next;
-      trailNode = trailNode.next;
-    }
-
-    return trailNode;
-  }
 }
 
 const list = new SinglyLinkedList();
@@ -54,5 +34,4 @@ list.push(3);
 list.push(4);
 list.push(5);
 list.push(6);
-
-console.log(list.kthToLast(6));
+list.push(7);
