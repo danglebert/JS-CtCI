@@ -1,5 +1,3 @@
-console.log('________________________');
-
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -113,25 +111,3 @@ const inOrderSumList = (l1, l2) => {
   }
   return Number(sum);
 };
-
-const list1 = new SinglyLinkedList();
-const list2 = new SinglyLinkedList();
-list1.push(7);
-list1.push(1);
-list1.push(6);
-list2.push(1);
-list2.push(5);
-list2.push(9);
-list2.push(2);
-
-const list3 = new SinglyLinkedList();
-const list4 = new SinglyLinkedList();
-list3.push(6);
-list3.push(1);
-list3.push(7);
-list4.push(2);
-list4.push(9);
-list4.push(5);
-list4.push(1);
-
-console.log(inOrderSumList(list1, list2));
