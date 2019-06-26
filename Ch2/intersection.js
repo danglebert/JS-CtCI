@@ -1,5 +1,3 @@
-console.log('________________________');
-
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -25,15 +23,23 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
-
-  loopDetection() {
-    const visited = new Set();
-
-    let currNode = this.head;
-    while (currNode) {
-      if (visited.has(currNode)) return currNode;
-      else visited.add(currNode);
-      currNode = currNode.next;
-    }
-  }
 }
+
+const intersection = (l1, l2) => {
+  if (l1.tail !== l2.tail) return false;
+
+  const longerList = l1.length > l2.length ? l1 : l2;
+  const shorterList = l1.length <= l2.length ? l1 : l2;
+
+  let curr1 = longerList.head;
+  let curr2 = shorterList.head;
+  for (let i = longerList.length - shorterList.length; i > 0; --i) {
+    curr1 = curr1.next;
+  }
+
+  while (curr1 !== curr2) {
+    curr1 = curr1.next;
+    curr2 = curr2.next;
+  }
+  return curr1;
+};

@@ -1,5 +1,3 @@
-console.log('________________________');
-
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -26,14 +24,19 @@ class SinglyLinkedList {
     return this;
   }
 
-  loopDetection() {
-    const visited = new Set();
+  isPalidrome() {
+    const vals = [];
 
     let currNode = this.head;
     while (currNode) {
-      if (visited.has(currNode)) return currNode;
-      else visited.add(currNode);
+      vals.push(currNode.val);
       currNode = currNode.next;
     }
+
+    for (let i = 0, j = vals.length - 1; i < j; ++i, --j) {
+      if (vals[i] !== vals[j]) return false;
+    }
+
+    return true;
   }
 }
