@@ -1,5 +1,3 @@
-console.log('________________________');
-
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -45,6 +43,3 @@ const intersection = (l1, l2) => {
   }
   return curr1;
 };
-
-const list1 = new SinglyLinkedList();
-const list2 = new SinglyLinkedList();
