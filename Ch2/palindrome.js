@@ -1,5 +1,3 @@
-console.log('________________________');
-
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -30,7 +28,6 @@ class SinglyLinkedList {
     const vals = [];
 
     let currNode = this.head;
-
     while (currNode) {
       vals.push(currNode.val);
       currNode = currNode.next;
@@ -39,18 +36,7 @@ class SinglyLinkedList {
     for (let i = 0, j = vals.length - 1; i < j; ++i, --j) {
       if (vals[i] !== vals[j]) return false;
     }
+
     return true;
   }
 }
-
-const list1 = new SinglyLinkedList();
-
-list1.push('r');
-list1.push('a');
-list1.push('c');
-list1.push('a');
-list1.push('c');
-list1.push('a');
-list1.push('r');
-
-console.log(list1.isPalidrome());
