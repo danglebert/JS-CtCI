@@ -36,70 +36,66 @@ class Stack {
   }
 }
 
-class SetOfStacks {
+// Using one stack
+// class MyQueue {
+//   constructor() {
+//     this.queue = new Stack();
+//   }
+
+//   push(val) {
+//     this.queue.push(new Node(val));
+//   }
+
+//   pop() {
+//     let currNode = this.queue.first;
+//     let trailNode = null;
+
+//     while (currNode.next) {
+//       trailNode = currNode;
+//       currNode = currNode.next;
+//     }
+
+//     trailNode.next = null;
+//     this.queue.last = trailNode;
+//     this.queue.size--;
+
+//     return currNode;
+//   }
+// }
+
+// Using 2 stacks
+class MyQueue {
   constructor() {
-    this.size = 1;
-    this.stack0 = new Stack();
-    this.priority = this.stack0;
+    this.stack = new Stack();
+    this.queue = new Stack();
   }
 
   push(val) {
-    const newNode = new Node(val);
-    // Need to find a way to change prio if the size exists?
+    this.stack.push(new Node(val));
+  }
 
-    if (this.priority.size > 9) {
-      if (this[`stack${this.size - 1}`].size < 10) {
-        this.priority = this[`stack${this.size - 1}`];
-      } else {
-        this[`stack${this.size}`] = new Stack();
-        this.priority = this[`stack${this.size}`];
-        this.size++;
+  shift() {
+    if (this.queue.size <= 0) {
+      while (this.stack.size > 0) {
+        this.queue.push(this.stack.pop());
       }
     }
-
-    this.priority.push(newNode);
   }
 
   pop() {
-    const popNode = this.priority.pop();
-    if (!this.priority.size) {
-      this.size--;
-      delete this[`stack${this.size}`];
-      this.priority = this[`stack${this.size - 1}`];
-    }
-    return popNode;
-  }
-
-  popAt(stackNum) {
-    const poppedNode = this[`stack${stackNum}`].pop();
-
-    if (this[`stack${stackNum}`].size) {
-      this.priority = this[`stack${stackNum}`];
-    } else {
-      this.size--;
-      delete this[`stack${this.size}`];
-      this.priority = this[`stack${this.size - 1}`];
-    }
-
-    return poppedNode;
+    this.shift();
+    return this.queue.pop();
   }
 }
 
-stackSet = new SetOfStacks();
-stackSet.push(1);
-stackSet.push(2);
-stackSet.push(3);
-stackSet.push(4);
-stackSet.push(5);
-stackSet.push(6);
-stackSet.push(7);
-stackSet.push(8);
-stackSet.push(9);
-stackSet.push(10);
-stackSet.push(11);
-stackSet.popAt(0);
-// stackSet.pop();
-// stackSet.push(12);
-// stackSet.push(13);
+const queue = new MyQueue();
 
-console.log(stackSet);
+queue.push(1);
+queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
+queue.push(6);
+queue.pop();
+
+console.log(queue);
