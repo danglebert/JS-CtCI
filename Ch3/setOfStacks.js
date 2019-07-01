@@ -1,4 +1,3 @@
-console.log('________________________');
 class Node {
   constructor(val, next = null) {
     this.val = val;
@@ -71,6 +70,7 @@ class SetOfStacks {
   }
 
   popAt(stackNum) {
+    // For this iteration, I assume that we take from the specified stack and will refill that stack before pushing back onto the end once more values are pushed.
     const poppedNode = this[`stack${stackNum}`].pop();
 
     if (this[`stack${stackNum}`].size) {
@@ -84,22 +84,3 @@ class SetOfStacks {
     return poppedNode;
   }
 }
-
-stackSet = new SetOfStacks();
-stackSet.push(1);
-stackSet.push(2);
-stackSet.push(3);
-stackSet.push(4);
-stackSet.push(5);
-stackSet.push(6);
-stackSet.push(7);
-stackSet.push(8);
-stackSet.push(9);
-stackSet.push(10);
-stackSet.push(11);
-stackSet.popAt(0);
-// stackSet.pop();
-// stackSet.push(12);
-// stackSet.push(13);
-
-console.log(stackSet);
