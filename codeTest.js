@@ -34,68 +34,12 @@ class Stack {
     this.size--;
     return poppedNode;
   }
-}
 
-// Using one stack
-// class MyQueue {
-//   constructor() {
-//     this.queue = new Stack();
-//   }
-
-//   push(val) {
-//     this.queue.push(new Node(val));
-//   }
-
-//   pop() {
-//     let currNode = this.queue.first;
-//     let trailNode = null;
-
-//     while (currNode.next) {
-//       trailNode = currNode;
-//       currNode = currNode.next;
-//     }
-
-//     trailNode.next = null;
-//     this.queue.last = trailNode;
-//     this.queue.size--;
-
-//     return currNode;
-//   }
-// }
-
-// Using 2 stacks
-class MyQueue {
-  constructor() {
-    this.stack = new Stack();
-    this.queue = new Stack();
-  }
-
-  push(val) {
-    this.stack.push(new Node(val));
-  }
-
-  shift() {
-    if (this.queue.size <= 0) {
-      while (this.stack.size > 0) {
-        this.queue.push(this.stack.pop());
-      }
-    }
-  }
-
-  pop() {
-    this.shift();
-    return this.queue.pop();
+  peek() {
+    return this.first;
   }
 }
 
-const queue = new MyQueue();
-
-queue.push(1);
-queue.push(2);
-queue.push(3);
-queue.push(4);
-queue.push(5);
-queue.push(6);
-queue.pop();
-
-console.log(queue);
+const sortStack = stack => {
+  const tempStack = new Stack();
+};
